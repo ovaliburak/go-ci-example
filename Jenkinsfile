@@ -36,8 +36,6 @@ pipeline{
                 } 
             }
         }
-    }
-    stages{
         stage("Building Image"){
             steps{
                 script{
@@ -55,4 +53,6 @@ pipeline{
             }
         }
     }
+ 
+    
 }
