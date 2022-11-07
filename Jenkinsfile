@@ -4,7 +4,7 @@ pipeline{
         stage("sonar quality"){
             steps{
                 dir("./test") {
-                    sh "pwd"
+                    sh "go test -v -coverprofile=coverage.out ./..."
                 }
                 script{
                     def scannerHome = tool 'sonarqube-scanner';
