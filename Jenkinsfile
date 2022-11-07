@@ -40,6 +40,7 @@ pipeline{
             steps{
                 script{
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImageLatest = docker.build registry 
                 }
             }
         }
@@ -48,6 +49,7 @@ pipeline{
                 script{
                     docker.withRegistry('', registryCredential){
                         dockerImage.push()
+                        dockerLatest.push()
                     }
                 }
             }
