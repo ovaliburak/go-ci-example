@@ -4,8 +4,3 @@ package math
 func Add(x, y int) (res int) {
 	return x + y
 }
-
-// Subtract subtracts two integers
-func Subtract(x, y int) (res int) {
-	return x - y
-}
