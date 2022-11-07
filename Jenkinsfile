@@ -2,9 +2,17 @@ pipeline{
     agent any
     stages{
         stage("sonar quality"){
-            def scannerHome = tool 'SonarScanner 4.0';
-            withSonarQubeEnv(credentialsId: 'sonar-token') { 
-                sh "${scannerHome}/bin/sonar-scanner"
+            agent {
+                docker {
+                    image:sfydli/golang-sonar-scanner
+                }
+            }
+            steps{
+                script {
+                    withSonarQubeEnv(credentialsId: 'sonar-token') {
+                        sh 'go test -v -coverprofile=coverage.out ./...'
+                    }
+                }
             }
         }
     }
