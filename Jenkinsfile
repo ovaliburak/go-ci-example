@@ -2,7 +2,6 @@ pipeline{
     agent any
     tools {
         go 'go'
-        docker 'docker'
     }
     environment {
         GO114MODULE = 'on'
@@ -36,9 +35,6 @@ pipeline{
                     waitForQualityGate abortPipeline: true
                 } 
             }
-        }
-        stage("Initialize Docker"){
-            env.PATH = "${docker}/bin:${env.PATH}"
         }
         stage("Building Image"){
             steps{
