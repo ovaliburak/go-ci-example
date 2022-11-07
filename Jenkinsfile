@@ -4,7 +4,7 @@ pipeline{
         stage("sonar quality"){
             steps{
                 script{
-                    def scannerHome = tool 'SonarScanner 4.0';
+                    def scannerHome = tool 'sonarqube-scanner';
                     withSonarQubeEnv('My SonarQube Server') { 
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
