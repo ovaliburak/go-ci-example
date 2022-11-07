@@ -7,7 +7,7 @@ pipeline{
         GO114MODULE = 'on'
         CGO_ENABLED = 0 
         GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
-        registry = "burakovali/go-app"
+        registry = "docker.io/burakovali/go-app"
         registryCredential = dockerlogin
     }
     stages{
