@@ -8,7 +8,7 @@ pipeline{
         CGO_ENABLED = 0 
         GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
         registry = "burakovali/go-app"
-        registryCredential = "dockerlogin"
+        registryCredential = credentials("dockerlogin")
     }
     stages{
         stage("Go Test"){
