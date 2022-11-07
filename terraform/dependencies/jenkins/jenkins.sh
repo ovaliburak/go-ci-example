@@ -5,6 +5,6 @@ sudo apt update && sudo apt install default-jre -y && \
 	sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list' && \
 	sudo apt update && \
 	sudo apt install jenkins -y && sudo systemctl start jenkins && sudo ufw allow OpenSSH && \
-	sudo ufw enable
+	sudo ufw enable && sudo ufw allow 8080
 EOF
 
