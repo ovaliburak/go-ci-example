@@ -1,10 +1,11 @@
 pipeline{
     agent any
     stages{
-        stage("sonar quality"){
-            withSonarQubeEnv(credentialsId: 'sonar-token') {
-               sh 'sonar-scanner'
+        stage('Static Code Analysis'){
+        withSonarQubeEnv('sonarqube') {
+            sh 'sonar-scanner'
             }
         }
+        
     }
 }
