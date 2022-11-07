@@ -3,8 +3,8 @@ pipeline{
     stages{
         stage("sonar quality"){
             agent {
-                docker {
-                    image 'sfydli/golang-sonar-scanner'
+                docker{
+                    image 'sfydli/golang-sonar-scanner:1.0.0'
                 }
             }
             steps{
