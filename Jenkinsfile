@@ -7,6 +7,8 @@ pipeline{
         GO114MODULE = 'on'
         CGO_ENABLED = 0 
         GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
+        registry = "burakovali/go-app"
+        registryCredential = "dockerlogin"
     }
     stages{
         stage("Go Test"){
@@ -32,6 +34,24 @@ pipeline{
                 timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true
                 } 
+            }
+        }
+    }
+    stages{
+        stage("Building Image"){
+            steps{
+                script{
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
+        stage("Deploy Image"){
+            steps{
+                script{
+                    docker.withRegistry('', registryCredential){
+                        dockerImage.push()
+                    }
+                }
             }
         }
     }
