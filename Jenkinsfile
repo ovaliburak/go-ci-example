@@ -2,6 +2,7 @@ pipeline{
     agent any
     tools {
         go 'go'
+        docker 'docker'
     }
     environment {
         GO114MODULE = 'on'
@@ -36,11 +37,12 @@ pipeline{
                 } 
             }
         }
+        stage("Initialize Docker"){
+            env.PATH = "${docker}/bin:${env.PATH}"
+        }
         stage("Building Image"){
             steps{
-                script{
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                }
+                sh dockerImage = docker.build registry + ":$BUILD_NUMBER"
             }
         }
         stage("Deploy Image"){
