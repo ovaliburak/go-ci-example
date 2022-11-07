@@ -8,6 +8,7 @@ type addTest struct {
 }
 
 var addTests = []addTest{
+	// addTest{2, 3, 5},
 	addTest{2, 3, 5},
 	addTest{4, 8, 12},
 	addTest{6, 9, 15},
