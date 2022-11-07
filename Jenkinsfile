@@ -5,7 +5,9 @@ pipeline{
             steps{
                 script{
                     def scannerHome = tool 'sonarqube-scanner';
-                    withSonarQubeEnv(credentialsId: 'sonar-token') { 
+                    withSonarQubeEnv(credentialsId: 'sonar-token') {
+                        sh "pwd"
+                        sh "go test -v -coverprofile=coverage.out ./..." 
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
                 }
