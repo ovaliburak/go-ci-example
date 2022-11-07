@@ -10,9 +10,9 @@ type addTest struct {
 var addTests = []addTest{
 	// addTest{2, 3, 5},
 	addTest{2, 3, 1},
-	addTest{4, 8, 1},
-	addTest{6, 9, 1},
-	addTest{3, 10, 1},
+	addTest{4, 8, 12},
+	addTest{6, 9, 15},
+	addTest{3, 10, 13},
 }
 
 func TestAdd(t *testing.T) {
