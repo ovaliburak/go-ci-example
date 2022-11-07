@@ -39,22 +39,19 @@ pipeline{
         stage("Building Image"){
             steps{
                 script{
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                    dockerImageLatest = docker.build registry 
+                    dockerImage = docker.build("burakovali/go-app")
                 }
             }
         }
         stage("Deploy Image"){
             steps{
                 script{
-                    docker.withRegistry('', registryCredential){
-                        dockerImage.push()
-                        dockerLatest.push()
+                    docker.withRegistry("https://registry.hub.docker.com", registryCredential){
+                        dockerImage.push("${env.BUILD_NUMBER}")
+                        dockerImage.push("latest")
                     }
                 }
             }
         }
     }
- 
-    
 }
