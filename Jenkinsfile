@@ -53,5 +53,14 @@ pipeline{
                 }
             }
         }
+        stage("Indentifying misconfigs with Datree in Helm Charts"){
+            steps{
+                script{
+                    dir('k8s/') {
+                        sh "helm datree test helm/go-app/"
+                    }
+                }
+            }
+        }
     }
 }
