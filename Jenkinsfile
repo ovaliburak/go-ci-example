@@ -57,7 +57,9 @@ pipeline{
             steps{
                 script{
                     dir('k8s/') {
-                        sh "helm datree test helm/go-app/"
+                        withEnv(['DATREE_TOKEN=8c589423-b1bd-4686-aa6a-1e2779d7f268']) {
+                            sh "helm datree test helm/go-app/"
+                        }       
                     }
                 }
             }
