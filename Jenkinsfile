@@ -57,7 +57,8 @@ pipeline{
             steps{
                 script{
                     dir('k8s/') {
-                        sh "helm datree test helm/go-app/"
+                        sh "helm plugin install https://github.com/datreeio/helm-datree"
+                        sh "helm datree install helm/go-app/"
                     }
                 }
             }
