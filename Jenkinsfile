@@ -53,5 +53,31 @@ pipeline{
                 }
             }
         }
+        stage("Indentifying misconfigs with Datree in Helm Charts"){
+            steps{
+                script{
+                    dir('k8s/') {
+                        withEnv(['DATREE_TOKEN=8c589423-b1bd-4686-aa6a-1e2779d7f268']) {
+                            sh "helm datree test helm/go-app/"
+                        }       
+                    }
+                }
+            }
+        }
+        stage("Take Release App"){
+            steps{
+                script{
+                    dir('k8s/releases/') {
+                        sh '''
+                            helmversion=$(helm show chart ../helm/go-app/ | grep version | cut -d: -f 2 | tr -d ' ')
+                            tar -czvf go-app-${helmversion}.tgz ../helm/go-app/
+                            helm repo index . --url https://ovaliburak.github.io/go-gcp-devops-project/
+                            ls -al
+                            pwd
+                        '''
+                    }
+                }
+            }
+        }
     }
 }
