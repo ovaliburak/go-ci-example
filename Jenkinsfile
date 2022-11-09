@@ -64,5 +64,13 @@ pipeline{
                 }
             }
         }
+        stage("Pushing the Helm Charts"){
+            steps{
+                script{
+                    sh "pwd"
+                    sh "ls -al"
+                }
+            }
+        }
     }
 }
