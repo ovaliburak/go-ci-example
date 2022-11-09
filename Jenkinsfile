@@ -64,10 +64,18 @@ pipeline{
                 }
             }
         }
-        stage("Pushing the Helm Charts"){
+        stage("Take Release App"){
             steps{
                 script{
-                    
+                    dir('k8s/releases/') {
+                        sh '''
+                            helmversion=$(helm show chart ../helm/go-app/ | grep version | cut -d: -f 2 | tr -d ' ')
+                            tar -czvf go-app-${helmversion}.tgz ../helm/go-app/
+                            helm repo index . --url https://ovaliburak.github.io/go-gcp-devops-project/
+                            ls -al
+                            pwd
+                        '''
+                    }
                 }
             }
         }
