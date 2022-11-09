@@ -1,3 +1,14 @@
 apiVersion: v1
-entries: {}
-generated: "2022-11-09T12:39:17.218302511+03:00"
+entries:
+  go-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-11-09T12:42:33.042052194+03:00"
+    description: A Helm chart for Kubernetes
+    digest: 44a0a4e2a7d08feec9f91ec33291e7354bc871de92b83aa48f82dc3797a62d64
+    name: go-app
+    type: application
+    urls:
+    - https://ovaliburak.github.io/go-gcp-devops-project/go-app-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-11-09T12:42:33.041781621+03:00"
