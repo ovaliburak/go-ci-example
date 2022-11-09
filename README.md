@@ -1,1 +1,0 @@
-# go-gcp-devops-project

@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/kustomization.json": "file:///home/burak/Documents/go-devops/k8s/namespace.yaml"
+    }
+}

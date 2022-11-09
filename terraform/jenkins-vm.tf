@@ -64,7 +64,7 @@ resource "google_compute_instance" "default" {
     # provisioning_model  = "STANDARD"
   }
 
-  metadata_startup_script = "${file("./scripts/jenkins.sh")}"
+  metadata_startup_script = "${file("./dependencies/jenkins/jenkins.sh")}"
 
   service_account {
     email  = "956503270234-compute@developer.gserviceaccount.com"

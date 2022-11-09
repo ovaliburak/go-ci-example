@@ -114,3 +114,5 @@ key.jsonoutputs
 ./outputs/*
 outputs/*
 ./outputs
+
+jenkins-sa-key.json
